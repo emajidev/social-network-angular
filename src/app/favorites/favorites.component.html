@@ -1,0 +1,61 @@
+<div  class="container-masonry masonry">
+
+  <div  *ngFor="let article of favoriteArticlesList" class="item {{article.size}} ">
+      
+      <div class="mini-head">
+          
+        <div  class="cont-title"><h4> {{article.title}} </h4> </div>
+        
+      <div class="cont-likes-style" style="cursor: pointer; ">
+          <i *ngIf="!article.isFavorite" class="fa fa-heart cont-likes" 
+           style="font-size:20px; color:rgb(44, 44, 44)"
+           (click)="addToFavoriteArticles(article.id_article)"></i>
+        <i *ngIf="article.isFavorite" class="icon-idea cont-likes" 
+        style="font-size:20px;font-weight: bold; color:rgb(255, 255, 255) ;padding: 2px; background:rgb(41, 209, 173); border-radius: 20px"
+           (click)="removeFromFavorite(article.id_article)"></i>
+      </div> 
+      
+      </div>
+      
+      
+      <div class="cont-img">
+        
+        <a class="img-ajust" [routerLink]="['/article', article.id_article]">
+         <img class="img-ajust" src="assets/articles/{{article.id_article}}/main.jpg" [alt]="article.title">
+        </a>
+      </div>
+
+  </div>
+
+<!--   <div class="item length " style=" background:#dcfafa;">
+    <img class="img-ajust" src="./assets/img/content/astracto.jpg" alt="">
+  </div>
+
+  <div class="item medium" style=" background: #dddcfa;" >
+    <img class="img-ajust" src="./assets/img/content/822944_1.jpg" alt="">
+  </div>
+
+  <div class="item medium " style=" background: #f3dcfa;" >
+    <img class="img-ajust" src="./assets/img/content/atronauta.jpg" alt="">  
+  </div>
+
+  <div class="item medium " style=" background:#f3dcfa;" >
+    <img class="img-ajust" src="./assets/img/content/depositphotos_58774317-stock-illustration-retro-hipster-photo-camera.jpg" alt="">
+  </div>
+
+  <div class="item medium " style=" background: #faf8dc;" >
+    <img class="img-ajust" src="./assets/img/content/fotoindie.jpg" alt="">
+  </div>
+
+  <div class="item small img-ajust" style=" background: #8effdd;" >
+    <img class="img-ajust" src="./assets/img/content/maxresdefault-146.jpg" alt="">
+  </div>
+
+  <div class="item medium img-ajust" style=" background:  #dddcfa;" >
+    <img class="img-ajust" src="./assets/img/content/large.jpg" alt="">
+  </div>
+
+  <div class="item medium img-ajust" style=" background: #dcedfa;" >
+    <img class="img-ajust" src="./assets/img/content/LINDIE-è-MORTO-IMG.jpg" alt="">
+  </div> -->
+</div>

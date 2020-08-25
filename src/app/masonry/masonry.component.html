@@ -1,0 +1,92 @@
+<div  class="container-masonry masonry">
+
+  <div  *ngFor="let article of articlesList" class="item {{article.size}} ">
+
+  <link  href="/src/app/masonry/masonry.js">     
+
+      <div style="width:100; height:20%;position: relative; background:rgb(255, 255, 255);">
+        <div class="m-title">
+        <p class=".t-title"> {{article.title}} </p>
+      </div>
+          <div class="cont-likes-style" style="cursor: pointer; ">
+            <!-- efectos brillante  -->
+            <div [@openBright]="article.isFavorite ? 'open' : 'closed'" style=" cursor:default; background:rgb(41, 209, 173); position:absolute; top: -40px;right: -20px;"><p style="font-size: 20px;padding: 5px;margin: 0; font-weight: bold;">¡BRILLANTE! *o*</p> </div>
+            <div [@closedBright]="article.isFavorite ? 'open' : 'closed'" 
+            style=" width:100px;
+            cursor:default; 
+            
+            background:rgb(41, 209, 173); 
+            position:absolute; 
+            top: -40px;
+            right: -20px;
+            text-align: 
+            center;">
+            <p class="icon-tongue2"style="font-size: 20px;padding: 10px;margin: 0;"></p> 
+          </div>
+           <!-- efectos likes -->
+            <div [@openBright]="article.isLiked ? 'open' : 'closed'" 
+            style=" cursor:default; 
+            background:#ff1d86; 
+            position:absolute; 
+            top: -40px;right: -20px;">
+            
+              <p class="icon-heart" 
+              style=" 
+              font-size: 20px;
+              padding: 10px;
+              margin: 0;
+              color:rgb(255, 255, 255)"> ^-^</p>   
+             </div>
+            <div [@closedBright]="article.isLiked ? 'open' : 'closed'" 
+            style=" 
+            width:100px;
+            cursor:default;  
+            position:absolute; 
+            top: -40px;
+            right: -20px;
+            text-align: center;">
+            <p class="icon-heart-broken " style="display:inline-block;font-size: 20px;padding:10px;margin: 0;"> 
+            </p>
+            <p class="icon-sad" style="display:inline-block; font-size: 20px;padding: 10px;margin: 0;" ></p>
+          </div>
+            
+          <div style="float: right;margin: 5px;">
+                <i id ="btn-idea" *ngIf="!article.isFavorite" class="icon-idea cont-likes" 
+                style="font-size:20px;font-weight: bold; color:rgba(44, 44, 44, 0.877)"
+                (click)="addToFavoriteArticles(article.id_article)"></i>
+             <i *ngIf="article.isFavorite" class="icon-idea cont-likes" 
+                style="font-size:20px;font-weight: bold; color:rgb(255, 255, 255) ;padding: 5px; background: rgb(41, 209, 173); border-radius: 20px"
+                (click)="removeFromFavorite(article.id_article)">
+              </i>
+               </div>
+              <div style="float: right; margin: 5px;"> 
+                
+              <i *ngIf="!article.isLiked" class="icon-heart cont-likes" 
+               style=" font-size:20px;color:rgba(44, 44, 44, 0.87)"
+               (click)="addToLikedArticles(article.id_article)">
+              </i> 
+    
+               <i *ngIf="article.isLiked" class="icon-heart cont-likes" 
+               style=" font-size:20px;color:rgb(207, 44, 52)"
+               (click)="removeLike(article.id_article)"></i>   
+              </div>
+             
+          </div>
+        <p style="margin: 0;    padding:0; font-size: 15px;" >{{article.username}}</p>
+        <p style="margin: 0;    padding:0; font-size: 15px;"> <a *ngFor="let hashtag of article.hashValues" (click)="searchHashtag('#'+ hashtag)">#{{hashtag}}</a></p>    
+        <p style="margin: 0;padding: 0; font-size: 60%; color: rgb(172, 172, 172);"> {{article.likes}} Me gusta </p>
+         
+      </div>
+
+      <div style="width:100; height:80%; background:rgb(138, 243, 203);">
+
+        <div class="cont-img">
+          <a class="img-ajust" [routerLink]="['/article', article.id_article]">
+          <img class="img-ajust" src="assets/articles/{{article.id_article}}/main.jpg" [alt]="article.title">
+          </a>
+        </div>
+      </div>
+  </div>
+</div>
+<div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()" [scrollWindow]="true" ></div>
+

@@ -1,0 +1,28 @@
+<div class="m-articles">
+  
+<div *ngIf="article && author" class="m-container-masonry m-masonry">
+    <!--  Imagen -->
+    <div class="item m-art-big img-ajust" > 
+      <img class="img-ajust" src="assets/articles/{{article.id_article}}/main.jpg" alt="{{ article.title }}">
+    </div>
+   <!--  title -->
+   <div id="" class="item m-art-resum details"  >
+        <h3>{{ article.description }}</h3>
+  </div>
+    <!-- Detalles -->
+    <div id="" class="item m-art-details details"  >
+        <h3>{{ article.details }}</h3>
+
+      </div>
+    <!-- Descripción -->
+    <div  id="" class="item m-art-title description">
+        <h4>{{ article.title }}</h4>
+        <h4>{{ article.hashtags }}</h4>
+    </div>
+
+</div>
+
+ 
+
+</div>
+<div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()" [scrollWindow]="true" ></div>
